@@ -28,34 +28,6 @@ function Header() {
 }
 
 function Menu() {
-  return (
-    <main className="menu">
-      <h2>Our menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
-    </main>
-  );
-}
-
-function Footer() {
-  const hour = new Date().getHours();
-  const openHour = 12;
-  const closeHour = 22;
-  const isOpen = hour >= openHour && hour <= closeHour;
-  //   console.log(isOpen);
-
-  //   if (hour >= openHour && hour <= closeHour) alert("We're currently open!");
-  //   else alert("Sorry we're closed!");
-
-  return (
-    <footer className="footer">
-      {new Date().toLocaleTimeString()} We're currently open!
-    </footer>
-  );
-}
-
-function Pizza() {
   const pizzaData = [
     {
       name: "Focaccia",
@@ -102,11 +74,53 @@ function Pizza() {
   ];
 
   return (
-    <div>
-      <img src="pizzas/spinaci.jpg" alt="Pizza Spinacci" />
-      <h3>Pizza Spinaci</h3>
-      <p>Tomato, mozarella, spinach and ricotta cheese</p>
+    <main className="menu">
+      <h2>Our menu</h2>
+      <Pizza
+        name={pizzaData[2].name}
+        ingredients={pizzaData[2].ingredients}
+        photoName={pizzaData[2].photoName}
+        price={pizzaData[2].price}
+      />
+      <Pizza
+        name={pizzaData[3].name}
+        ingredients={pizzaData[3].ingredients}
+        photoName={pizzaData[3].photoName}
+        price={pizzaData[3].price}
+      />
+    </main>
+  );
+}
+
+function Pizza(props) {
+  // console.log(props);
+
+  return (
+    <div className="pizza">
+      <img src={props.photoName} alt={props.name} />
+      <div>
+        <h3>{props.name}</h3>
+        <p>{props.ingredients}</p>
+        <span>{props.price}</span>
+      </div>
     </div>
+  );
+}
+
+function Footer() {
+  const hour = new Date().getHours();
+  const openHour = 12;
+  const closeHour = 22;
+  const isOpen = hour >= openHour && hour <= closeHour;
+  //   console.log(isOpen);
+
+  //   if (hour >= openHour && hour <= closeHour) alert("We're currently open!");
+  //   else alert("Sorry we're closed!");
+
+  return (
+    <footer className="footer">
+      {new Date().toLocaleTimeString()} We're currently open!
+    </footer>
   );
 }
 
